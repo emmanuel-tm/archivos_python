@@ -26,6 +26,16 @@ def altura_promedio(genero):
     #   el promedio al terminar el bucle
 
     # --- Comience aquí a desarrollar su código ---
+    with open('alturas.csv', mode='r') as csvfile:
+        data = list(csv.DictReader(csvfile))
+    valor = 0
+    contador = 0
+    for fila in data:
+        if fila.get('genero') == genero:
+            valor += float(fila.get('altura', 0.0))
+            contador += 1
+    promedio = valor / contador
+    return promedio
 
 
 if __name__ == '__main__':
